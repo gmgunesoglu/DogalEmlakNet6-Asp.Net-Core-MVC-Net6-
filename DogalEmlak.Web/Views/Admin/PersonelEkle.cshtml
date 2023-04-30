@@ -1,0 +1,35 @@
+﻿@model CreateUserModel
+@{
+    ViewData["Title"] = "Personel Ekle";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+@*nasıl ortalanacak?*@
+<div class="row">
+	<div class="col-4 justify-content-center">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+			<div class="form-group d-grid">
+				<br />
+				<input asp-for=FirstName class="form-control" placeholder="İsim"></input>
+				<span asp-validation-for="FirstName" class="text-danger" small></span>
+				<br />
+				<input asp-for=LastName class="form-control" placeholder="Soy İsim"></input>
+				<span asp-validation-for="LastName" class="text-danger" small></span>
+				<br />
+				<input asp-for=UserName class="form-control" placeholder="Kullanıcı Adı"></input>
+				<span asp-validation-for="UserName" class="text-danger" small></span>
+				<br />
+				<input asp-for=Password type="password" class="form-control" placeholder="Şifre"></input>
+				<span asp-validation-for="Password" class="text-danger" small></span>
+				<br />
+				<button type="submit" class="btn green-btn">Personel Ekle</button>
+			</div>
+		</form>
+	</div>
+</div>

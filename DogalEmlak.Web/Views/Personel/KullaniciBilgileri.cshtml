@@ -1,0 +1,59 @@
+﻿@model UserModel
+@{
+	ViewData["Title"] = "Kullanıcı Bilgileri";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>@Model.Id</th>
+    </tr>
+     <tr>
+        <th>Adı</th>
+        <th>@Model.FirstName</th>
+    </tr>     
+    <tr>
+        <th>Soy Adı</th>
+        <th>@Model.LastName</th>
+    </tr>
+    <tr>
+        <th>Kullanıcı Adı</th>
+        <th>@Model.UserName</th>
+    </tr>
+    <tr>
+        <th>Şifre</th>
+        <th>@Model.Password</th>
+    </tr>    
+    <tr>
+        <th>Yetkiler</th>
+        <th>
+            @if (User.IsInRole("Admin"))
+            {
+                <p>Admin Manager Personel</p>
+            }
+            else if (User.IsInRole("Manager"))
+            {
+                <p>Manager Personel</p>
+            }
+            else if (User.IsInRole("Staff"))
+            {
+                <p>Staff</p>
+            }
+            else
+            {
+                <p>Yetkilendirmede problem var</p>
+            }
+        </th> 
+    </tr>
+</table>
+<br />
+
+<form method="get" asp-action="KullaniciBilgileriniGuncelle" asp-route-id="@Model.Id">
+    <button type="submit" class="btn green-btn">Kullanıcı Bilgileri Güncelle</button>
+</form>

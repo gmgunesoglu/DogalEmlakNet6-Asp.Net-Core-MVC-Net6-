@@ -1,0 +1,64 @@
+﻿@model UserModel
+@{
+	ViewData["Title"] = "Personel Bilgilerini Güncelle";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+@*nasıl ortalanacak?*@	
+<div class="row">
+	<div class="col-4 justify-content-center">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+			<div class="form-group d-grid">
+				<br />
+				<label>İsim</label>
+				<input asp-for=FirstName class="form-control" placeholder=@Model.FirstName></input>
+				<span asp-validation-for="FirstName" class="text-danger" small></span>
+				<br />
+				<label>Soy İsim</label>
+				<input asp-for=LastName class="form-control" placeholder=@Model.LastName></input>
+				<span asp-validation-for="LastName" class="text-danger" small></span>
+				<br />
+				<label>Kullanıcı Adı</label>
+				<input asp-for=UserName class="form-control" placeholder=@Model.UserName></input>
+				<span asp-validation-for="UserName" class="text-danger" small></span>
+				<br />
+				<label>Şifre</label>
+				<input asp-for=Password type="password" class="form-control" placeholder=""></input>
+				<span asp-validation-for="Password" class="text-danger" small></span>
+				<br />
+				<div class="form-check">
+					<input asp-for="Locked" class="form-check-input" type="checkbox" />
+					<label asp-for="Locked" class="form-check-label">Kullanıcıyı Kilitle</label>
+				</div>
+				<br />
+				<div class="d-flex justify-content-between">
+					<label>
+						<button type="submit" class="btn green-btn">Bilgileri Güncelle</button>
+					</label>
+					<label>
+						@if (User.IsInRole("Admin"))
+						{
+							<a asp-area="" asp-controller="Admin" asp-action="Index">
+								<button type="button" class="btn green-btn">Geri Dön</button>
+							</a>
+						}
+						else
+						{
+							<a asp-area="" asp-controller="Personel" asp-action="Index">
+								<button type="button" class="btn green-btn">Geri Dön</button>
+							</a>
+						}
+					</label>
+				</div>		
+			</div>
+		</form>
+	</div>
+</div>
+
+<br />

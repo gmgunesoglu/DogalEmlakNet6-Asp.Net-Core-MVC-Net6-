@@ -1,0 +1,47 @@
+﻿@model List<UserModel>
+@{
+    ViewData["Title"] = "Personel Listesi";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+
+<table>
+    <tr>
+        <th>Personel Id</th>
+        <th>Adı</th>
+        <th>Soy Adı</th>
+        <th>Kullanıcı Adı</th>
+        <th>Şifresi</th>
+        <th>Pasif Mi</th>
+        <th>Eklendiği Tarih</th>
+        <th>Yetkiler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.UserName</td>
+            <td>@item.Password</td>
+            <td>@item.Locked</td>
+            <td>@item.DateOfAdded</td>
+            <td>
+                @foreach(var str in item.Roles)
+                {
+                    <label>@str.Authority</label>
+                }
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+
+
+

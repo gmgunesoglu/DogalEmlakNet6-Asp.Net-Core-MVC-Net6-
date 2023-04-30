@@ -1,0 +1,80 @@
+﻿@model AddPropertyModel
+@{
+	ViewData["Title"] = "İlan Ekle";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+@*nasıl ortalanacak?*@
+<div class="row">
+	<div class="col-4 justify-content-center">
+		<form method="post" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+			<div class="form-group d-grid">
+				<br />
+				<input asp-for=Header class="form-control" placeholder="Başlık"></input>
+				<span asp-validation-for="Header" class="text-danger" small></span>
+				<br />
+				<input asp-for=Price class="form-control" placeholder="Fiyat"></input>
+				<span asp-validation-for="Price" class="text-danger" small></span>
+				<br />
+				<input asp-for=Address class="form-control" placeholder="Adres"></input>
+				<span asp-validation-for="Address" class="text-danger" small></span>
+				<br />
+				<input asp-for=TypeOfProperty class="form-control" placeholder="Mülk Tipi"></input>
+				<span asp-validation-for="TypeOfProperty" class="text-danger" small></span>
+				<br />
+				<input asp-for=TypeOfUsage class="form-control" placeholder="Kullanım Bilgisi"></input>
+				<span asp-validation-for="TypeOfUsage" class="text-danger" small></span>
+				<br />
+				<input asp-for=Rooms class="form-control" placeholder="Oda Sayısı Örnek:(3+1)"></input>
+				<span asp-validation-for="Rooms" class="text-danger" small></span>
+				<br />
+				<input asp-for=SizeOfNet class="form-control" placeholder="Net Metrekare Örnek(120m)"></input>
+				<span asp-validation-for="SizeOfNet" class="text-danger" small></span>
+				<br />
+				<input asp-for=SizeOfGross class="form-control" placeholder="Brüt Metrekare Örnek(140m)"></input>
+				<span asp-validation-for="SizeOfGross" class="text-danger" small></span>
+				<br />
+
+				<div id="imageUploads">
+					<div class="form-group">
+						<label for="imageFiles">Resim Ekle:</label>
+						@*<input asp-for=Files type="file" name="Files" multiple="multiple" class="form-control image-upload">*@
+						<input asp-for=Files type="file" name="Files" class="form-control image-upload">
+					</div>
+				</div>
+
+				<br />
+				<button type="submit" class="btn green-btn">İlan Ekle</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+
+
+
+@section scripts {
+	<script>
+		$(document).ready(function () {
+			// Yeni bir dosya seçildiğinde
+			$(document).on('change', '.image-upload', function () {
+				var index = $("#imageUploads").children().length;
+				$("#imageUploads").append(`
+					<div class="form-group">
+						<label for="imageFiles_${index}">Resim Ekle:</label>
+						<input asp-for=Files type="file" name="Files" class="form-control image-upload"/>
+					</div>
+				`);
+			});
+		});
+	</script>
+}

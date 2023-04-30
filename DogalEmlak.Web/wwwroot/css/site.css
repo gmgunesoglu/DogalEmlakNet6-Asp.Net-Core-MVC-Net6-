@@ -1,0 +1,107 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+}
+
+body {
+    background-color: #AAFFC7;  
+}
+
+main {
+    min-height: calc(100vh - 350px);
+}
+
+table {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 8px;
+    border-right: 5px solid #5FCC9C;
+    border-left: 5px solid #5FCC9C;
+}
+
+th {
+    background-color: #5FCC9C;
+    font-size: 22px;
+    border-bottom: 3px solid #5FCC9C;
+    border-top: 3px solid #5FCC9C;
+    padding: 10px;
+}
+
+td {
+    background-color: #6DECB9;
+    font-size: 20px;
+    border-bottom: 5px solid #5FCC9C;
+    padding: 8px;
+}
+
+.navbar {
+    font-size: 22px;
+    color: green;
+}
+
+.footer {
+    font-size: 20px;
+}
+
+.topandbottom {
+    font-weight: bold;
+    background-color: #5FCC9C;
+    font-family: Arial, sans-serif;
+    color: green;
+}
+
+.green-text {
+    color: green;
+}
+
+.nav-item {
+    color: green;
+}
+
+    .nav-link:hover {
+        color: #00ff00;
+    }
+
+.green-btn {
+    background-color: #5FCC9C;
+    border-color: #5FCC9C;
+}
+
+    .green-btn:hover {
+        background-color: #00BEBE;
+        border-color: #42E6A4;
+    }
+
+
+.orange-text {
+    color: #F97B22;
+}
+
+    .orange-text:hover {
+        color: #FC4F00;
+    }
+
+.button-menu {
+    width: 100%;
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color:darkgreen;
+}
+
+.form-control {
+    background-color: #B8F1B0;
+}

@@ -1,0 +1,51 @@
+﻿@model List<PropertySummaryModel>
+@{
+    ViewData["Title"] = "İlanları Listele";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+<table>
+    <tr>
+        <th>Satılık/Kiralık</th>
+        <th>Emlak Tipi</th>
+        <th>Oda Sayısı</th>
+        <th>Fiyat</th>
+        <th>Başlık</th>
+        <th>Net Metrekare</th>
+        <th>Güncellenme Tarihi</th>
+        <th>Aksiyon</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TypeOfUsage</td>
+            <td>@item.TypeOfProperty</td>
+            <td>@item.Rooms</td>
+            <td>@item.Price</td>
+            <td>@item.Header</td>
+            <td>@item.SizeOfNet</td>
+            <td>@item.DateOfRenewal.ToLongDateString()</td>
+
+            <td>
+                <div class="col-3">
+                    <form method="get" asp-action="Ilan" asp-route-id="@item.Id">
+                        <button type="submit" class="btn green-btn" style="width: 100px; height: 40px;">İncele</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+
+
+

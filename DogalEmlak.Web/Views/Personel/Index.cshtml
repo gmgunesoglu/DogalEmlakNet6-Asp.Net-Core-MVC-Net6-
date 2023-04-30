@@ -1,0 +1,42 @@
+﻿@{
+	ViewData["Title"] = "Personel";
+}
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+
+<div class="row">
+	<div class="col-4 d-flex align-items-center">
+		<div class="form-group d-grid">
+			<h2 class="text-center">Menüler</h2>
+			<a asp-area="" asp-controller="Personel" asp-action="KullaniciBilgileri">
+				<button type="submit" class="btn green-btn button-menu	">Kullanıcı Bilgilerini Gör</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="KullaniciBilgileriniGuncelle">
+				<button type="submit" class="btn green-btn button-menu">Kullanıcı Bilgilerini Güncelle</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="IlanEkle">
+				<button type="submit" class="btn green-btn button-menu">İlan Ekle</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="IlanlariYonet">
+				<button type="submit" class="btn green-btn button-menu">İlan Sil</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="IlanlariYonet">
+				<button type="submit" class="btn green-btn button-menu">İlan Güncelle</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="IlanlariYonet">
+				<button type="submit" class="btn green-btn button-menu">İlanları Yönet</button>
+			</a>
+			<a asp-area="" asp-controller="Home" asp-action="Index">
+				<button type="submit" class="btn green-btn button-menu">İlanları Listele</button>
+			</a>
+			<a asp-area="" asp-controller="Personel" asp-action="Cikis">
+				<button type="submit" class="btn green-btn button-menu">Çıkış Yap</button>
+			</a>
+		</div>
+	</div>
+</div>

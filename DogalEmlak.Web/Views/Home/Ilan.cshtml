@@ -1,0 +1,76 @@
+﻿@model ShowPropertyModel
+@{
+    ViewData["Title"] = "İlanları Bilgileri";
+}
+
+
+
+
+<div class="text-center 100size">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+<br />
+
+<div style="display: flex;">
+    <div class="col-5">
+        <table>
+            <tr>
+                <th>İlan No: </th>
+                <th>@Model.Id</th>
+            </tr>
+            <tr>
+                <th>Başlık: </th>
+                <th>@Model.Header</th>
+            </tr>
+            <tr>
+                <th>Emlak Tipi: </th>
+                <th>@Model.TypeOfProperty</th>
+            </tr>
+            <tr>
+                <th>Satış Tipi: </th>
+                <th>@Model.TypeOfUsage</th>
+            </tr>
+            <tr>
+                <th>Fiyat: </th>
+                <th>@Model.Price TL</th>
+            </tr>
+            <tr>
+                <th>Eklenme Tarihi: </th>
+                <th>@Model.DateOfAdded</th>
+            </tr>
+            <tr>
+                <th>Güncellenme Tarihi: </th>
+                <th>@Model.DateOfRenewal</th>
+            </tr>
+            <tr>
+                <th>Bürüt Metrekare: </th>
+                <th>@Model.SizeOfGross</th>
+            </tr>
+            <tr>
+                <th>Net Metrekare: </th>
+                <th>@Model.SizeOfNet</th>
+            </tr>
+            <tr>
+                <th>Oda Sayısı: </th>
+                <th>@Model.Rooms</th>
+            </tr>
+            <tr>
+                <th>Adres: </th>
+                <th>@Model.Address</th>
+            </tr>
+        </table>
+    </div>
+    <div class="col-8">
+        <div class="row">
+            @foreach (var propertyImage in Model.ImageData)
+            {
+                <div class="col-md-3">
+                    <img src="data:image;base64,@Convert.ToBase64String(propertyImage)" class="img-thumbnail" />
+                </div>
+            }
+        </div>
+    </div>
+    <br />
+</div>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DogalEmlak</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DogalEmlak.Web.styles.css" asp-append-version="true" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow topandbottom">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link green-text" asp-area="" asp-controller="Home" asp-action="Index">Dogal Emlak</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link green-text" asp-area="" asp-controller="Admin" asp-action="Index">Panel[Admin]</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("Manager"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link green-text" asp-area="" asp-controller="Admin" asp-action="Index">Panel[Yönetici]</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link green-text" asp-area="" asp-controller="Personel" asp-action="Index">Panel[Personel]</a>
+                                </li>
+                            }
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Personel" asp-action="KullaniciBilgileri">@User.FindFirst("UserName").Value</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link green-text" asp-area="" asp-controller="personel" asp-action="Cikis">Çıkış</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Home" asp-action="Index">Satılk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Home" asp-action="Index">Kiralık</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Home" asp-action="Index">Daire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Home" asp-action="Index">Mustakil</a>
+                            </li>
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link green-text" asp-area="" asp-controller="Personel" asp-action="Giris">Personel Girisi</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <br />
+            <br />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer topandbottom">
+        <div style="display: flex; margin-top: 100px;">
+            <div style="margin-right: auto; margin-left: 20px;">
+                <p>Web Programlama Vize Ödevi</p>
+                <p>Gökhan Güneşoğlu </p>
+                <p>3.Sınıf 1.Şube 201817014</p>
+                <p>Bu günün tarihi: @DateTime.Today.ToShortDateString()</p>
+            </div>
+            <div style="margin: auto; margin-top: 0px;" class="text-center">
+                <p>Teknolojiler</p>
+                <p>VisualStudio 2022</p>
+                <p>Asp.Net Core MVC (NET6)</p>              
+                <p>Microsoft Sql Server</p>
+            </div>
+            <div style="margin-left: auto; margin-right: 20px;" class="text-end">  
+                <p style="color:#F97B22">Linkler</p>
+                <p><a class="orange-text" href="https://github.com/gmgunesoglu">Github Hesabım</a></p>
+                <p><a class="orange-text" href="https://www.youtube.com/channel/UCwvRyhL3TFBi1jgJ0nTQHWw">Yotube Kanalım</a></p>
+                <p><a class="orange-text" href="https://www.youtube.com/channel/UCwvRyhL3TFBi1jgJ0nTQHWw">Ödev Sunumum</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

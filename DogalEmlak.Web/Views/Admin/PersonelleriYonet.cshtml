@@ -1,0 +1,65 @@
+﻿@model List<UserModel>
+@{
+    ViewData["Title"] = "Personelleri Yönet";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<br />
+
+<table>
+    <tr>
+        <th>Adı</th>
+        <th>Soy Adı</th>
+        <th>Kullanıcı Adı</th>
+        <th>Pasif Mi</th>
+        <th>Eklendiği Tarih</th>
+        <th>Yetkiler</th>
+        <th>Aksiyon</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.UserName</td>
+            <td>@item.Locked</td>
+            <td>@item.DateOfAdded</td>
+            <td>
+                @foreach (var str in item.Roles)
+                {
+                    <label>@str.Authority</label>
+                }
+            </td>
+            <td>
+                <label>
+                    <form method="get" asp-action="PersonelBilgileriniGuncelle" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                    </form>
+                </label>
+                <label>
+                    <form method="post" asp-action="EmpowerUser" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-success">Yetki Ver</button>
+                    </form>
+                </label>
+                <label>
+                    <form method="post" asp-action="DepowerUser" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-warning">Yetki Al</button>
+                    </form>
+                </label>
+                <label>
+                    <form method="post" asp-action="DeleteUser" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </label>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+
+
+
